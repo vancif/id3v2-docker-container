@@ -10,7 +10,7 @@ jobs:
 
     permissions:
       contents: read
-      packages: write # IMPORTANT for pushing to GHCR
+      packages: write
 
     steps:
       - name: Checkout code
@@ -32,4 +32,4 @@ jobs:
           context: .
           push: true
           platforms: linux/arm64
-          tags: ghcr.io/${{ github.repository_owner }}/my-custom-image:latest
+          tags: ghcr.io/${{ github.repository_owner }}/id3-management:latest
