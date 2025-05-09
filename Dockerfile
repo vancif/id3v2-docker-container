@@ -21,8 +21,13 @@ FROM debian:bookworm-slim
 COPY --from=builder /usr/bin/id3v2 /usr/bin/id3v2
 COPY --from=builder /usr/local/bin/id3edit /usr/local/bin/id3edit
 
-# Optionally, copy libs if they were installed in /usr/local/lib
-COPY --from=builder /usr/local/lib/ /usr/local/lib/
-COPY --from=builder /lib/aarch64-linux-gnu/ /lib/aarch64-linux-gnu/
+# Copy required libraries
+COPY --from=builder /lib/aarch64-linux-gnu/libid3-3.8.so.3 /lib/aarch64-linux-gnu/libid3-3.8.so.3
+COPY --from=builder /lib/aarch64-linux-gnu/libstdc++.so.6 /lib/aarch64-linux-gnu/libstdc++.so.6
+COPY --from=builder /lib/aarch64-linux-gnu/libgcc_s.so.1 /lib/aarch64-linux-gnu/libgcc_s.so.1
+COPY --from=builder /lib/aarch64-linux-gnu/libc.so.6 /lib/aarch64-linux-gnu/libc.so.6
+COPY --from=builder /lib/aarch64-linux-gnu/libz.so.1 /lib/aarch64-linux-gnu/libz.so.1
+COPY --from=builder /lib/aarch64-linux-gnu/libm.so.6 /lib/aarch64-linux-gnu/libm.so.6
+COPY --from=builder /lib/ld-linux-aarch64.so.1 /lib/ld-linux-aarch64.so.1
 
 CMD ["bash"]
