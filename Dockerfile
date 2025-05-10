@@ -30,4 +30,8 @@ COPY --from=builder /lib/aarch64-linux-gnu/libz.so.1 /lib/aarch64-linux-gnu/libz
 COPY --from=builder /lib/aarch64-linux-gnu/libm.so.6 /lib/aarch64-linux-gnu/libm.so.6
 COPY --from=builder /lib/ld-linux-aarch64.so.1 /lib/ld-linux-aarch64.so.1
 
+RUN mkdir /music
+
+WORKDIR /music
+
 CMD ["bash"]
